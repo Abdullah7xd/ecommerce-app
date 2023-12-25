@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -26,10 +26,7 @@ const userSchema = new mongoose.Schema({
     role:{
         type:Number,
         default:0
-    },
-    
-
+    }
 },{timestamps:true}
 );
-
-export default mongoose.model('users',userSchema)
+  export default mongoose.model('users',userSchema)
