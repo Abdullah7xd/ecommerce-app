@@ -79,7 +79,19 @@ export const loginController = async(req,res) =>{
             })
         }
         //token
-        const token = await JWT.sign({id})
+        const token = await JWT.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn: "7d",
+    });
+    res.status(200).send({
+        success: true,
+        message:'login successfully',
+        user:{
+            name:user.name,
+            email:user.email,
+            phone:user.phone,
+            address:user.address
+        },
+        token,
+    })
         const match = await comparePassword(password,user.password)//for comparing users
         if(!match){
             return res.status(200).send({
